@@ -2,3 +2,4 @@ requests~=2.25.1
 nltk~=3.5
 beautifulsoup4~=4.9.3
 transformers~=4.3.3
+grpcio-tools~=1.36.1
