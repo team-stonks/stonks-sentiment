@@ -40,7 +40,7 @@ def extract_text_from_page(url):
     return text
 
 
-def get_news_for_company(name, for_days=2):
+def get_news_for_company(name, for_days=1):
     with open("config.json", "r") as c:
         api_key = json.load(c)['apiKey']
     name_encoded = urllib.parse.quote(name)
