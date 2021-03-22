@@ -1,9 +1,9 @@
+import json
 import grpc
 import stonks_pb2
 import stonks_pb2_grpc
 
 from news_sent import company_sentiment
-from company_dict import company_map
 
 
 def get_priority(client, company):
@@ -12,6 +12,8 @@ def get_priority(client, company):
 
 
 def get_top_five(client, companies):
+    with open("config.json", "r") as c:
+        company_map = json.load(c)['company_map']
     top_companies = sorted(companies, key=lambda c: get_priority(client, c), reverse=True)[:5]
     top_companies = [company_map.get(c, "S&P 500") for c in top_companies]
     top_companies = [(c, get_rating(c)) for c in top_companies]
